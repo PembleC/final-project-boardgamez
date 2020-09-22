@@ -8,14 +8,28 @@ My team has created an application that our users could use as a board game coll
 
 #### 3rd-Party APIs
 The 3rd-party API my team used to retrieve information about board games is: https://boardgamegeek.com/wiki/page/BGG_XML_API&redirectedfrom=XML_API#. 
-In our app, the user can search for board games by name. We first pass the name of the board game to the search API. For example, if a user searched for “Settlers of Catan”, the API query would look like: https://www.boardgamegeek.com/xmlapi/search?search=Settlers%20of%20Catan.
+In our app, the user can search for board games by name. We first pass the name of the board game to the search API. For example, if a user searched for “Settlers of Catan”, the API query would look like: 
+```sh
+https://www.boardgamegeek.com/xmlapi/search?search=Settlers%20of%20Catan.
+```
 
-<br />
-This particular query produces a list of board games containing these search terms. From this list, we get the name of each board game and the year it was published to display to the user. We also store the id of each board game listed. When the user finds and selects a board game from that list to view additional details about, we use the board game id to obtain more specific information by running another query such as: https://www.boardgamegeek.com/xmlapi/boardgame/32270?stats=1, where 32270 is the board game id and stats is set to true to obtain rating and ownership/trading information. From the results of this query we can obtain all the important information that we need.
+<br/>
+This particular query produces a list of board games containing these search terms. 
+From this list, we get the name of each board game and the year it was published to display to the user. 
+We also store the id of each board game listed. 
+When the user finds and selects a board game from that list to view additional details about, we use the board game id to obtain more specific information by running another query such as:
+https://www.boardgamegeek.com/xmlapi/boardgame/32270?stats=1.
+In this example, 32270 is the board game id and stats is set to true to obtain rating and ownership/trading information. 
+From the results of this query we can obtain all the important information that we need. <br/>
 
-<br />
 For our barcode scanner, we used the free version of the BarcodeSpider API: https://devapi.barcodespider.com/. 
-After scanning the barcode, we obtained the UPC and query the API to find the game title, description, and image: https://api.barcodespider.com/v1/lookup?token=<my_api_token>&upc=729220051097. The game title is then used to query for additional information on the boardgamegeek API. If the game is found on the boardgamegeek API, then that information will be used. However, if the game is not found on the boardgamegeek API, only the basic info will be given to the user.
+After scanning the barcode, we obtained the UPC and query the API to find the game title, description, and image: 
+```sh
+https://api.barcodespider.com/v1/lookup?token=<my_api_token>&upc=729220051097. 
+```
+The game title is then used to query for additional information on the boardgamegeek API. 
+If the game is found on the boardgamegeek API, then that information will be used. 
+However, if the game is not found on the boardgamegeek API, only the basic info will be given to the user.
 
 
 ## App Layout
